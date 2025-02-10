@@ -48,33 +48,33 @@ export const NewMovie: React.FC<NewMovieProps> = ({ onAdd }) => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsSubmitted(true);
 
     if (!isFormValid()) {
+      setIsSubmitted(true);
+
       return;
     }
 
-    if (isFormValid()) {
-      const newMovie = {
-        title: formData.title,
-        description: formData.description,
-        imgUrl: formData.imgUrl,
-        imdbUrl: formData.imdbUrl,
-        imdbId: formData.imdbId,
-      };
+    const newMovie = {
+      title: formData.title,
+      description: formData.description,
+      imgUrl: formData.imgUrl,
+      imdbUrl: formData.imdbUrl,
+      imdbId: formData.imdbId,
+    };
 
-      onAdd(newMovie);
+    onAdd(newMovie);
 
-      setFormData({
-        title: '',
-        description: '',
-        imgUrl: '',
-        imdbUrl: '',
-        imdbId: '',
-      });
-      setIsSubmitted(false);
-      setCount(prev => prev + 1);
-    }
+    setFormData({
+      title: '',
+      description: '',
+      imgUrl: '',
+      imdbUrl: '',
+      imdbId: '',
+    });
+
+    setIsSubmitted(false);
+    setCount(prev => prev + 1);
   }
 
   return (

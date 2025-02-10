@@ -46,7 +46,7 @@ export const TextField: React.FC<Props> = ({
   };
 
   const hasError = touched && required && !value;
-  const hasErrorUrl = (touched || isSubmitted) && validate(value) && error;
+  const hasErrorUrl = (touched || isSubmitted) && error;
 
   return (
     <div className="field">
@@ -74,9 +74,7 @@ export const TextField: React.FC<Props> = ({
       )}
 
       {hasErrorUrl && (
-        <p className="help is-danger">
-          {validate(value) || `${label} is not well`}
-        </p>
+        <p className="help is-danger">{error || `${label} is not well`}</p>
       )}
     </div>
   );
